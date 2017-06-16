@@ -28,6 +28,7 @@
     [self.headView addGestureRecognizer:swipe];
 }
 
+#pragma mark - 左右扫手势
 - (void)swipeHeadView
 {
     if ([self.resultLabel.text isEqualToString:@"0"]) return;
@@ -41,6 +42,7 @@
     [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
 }
 
+#pragma mark - xib action
 - (IBAction)zero {
     if ([self.resultLabel.text isEqualToString:@"0"]) return;
     [self appendNumber:@"0"];
@@ -121,6 +123,7 @@
     
 }
 
+#pragma mark - 添加数字
 - (void)appendNumber:(NSString *)number
 {
     if (self.resultLabel.text.length > (kMaxLength - 1)) return;
@@ -132,6 +135,7 @@
     [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
 }
 
+#pragma mark - 调整数字大小
 - (void)adjustResultLabelSizeFontWithResultStr:(NSString *)resultStr
 {
     if (resultStr.length <= 6) {
@@ -143,6 +147,7 @@
     }
 }
 
+#pragma mark - 修改状态栏颜色
 - (UIStatusBarStyle)preferredStatusBarStyle
 {
     return UIStatusBarStyleLightContent;

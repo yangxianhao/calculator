@@ -13,6 +13,7 @@
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
+@property (weak, nonatomic) IBOutlet UIButton *clearBtn;
 
 @end
 
@@ -20,7 +21,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    
 }
 
 - (IBAction)zero {
@@ -89,6 +91,7 @@
 }
 
 - (IBAction)clear {
+    self.clearBtn.selected = NO;
     self.resultLabel.text = @"0";
     [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
 }
@@ -107,6 +110,7 @@
     if ([self.resultLabel.text isEqualToString:@"0"] && ![number isEqualToString:@"."]) {
         self.resultLabel.text = @"";
     }
+    self.clearBtn.selected = YES;
     self.resultLabel.text = [self.resultLabel.text stringByAppendingString:number];
     [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
 }

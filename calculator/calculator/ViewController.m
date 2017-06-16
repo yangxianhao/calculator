@@ -107,8 +107,7 @@
     if ([self.resultLabel.text isEqualToString:@"0"] && ![number isEqualToString:@"."]) {
         self.resultLabel.text = @"";
     }
-    NSString *tempStr = self.resultLabel.text;
-    self.resultLabel.text = [tempStr stringByAppendingString:number];
+    self.resultLabel.text = [self.resultLabel.text stringByAppendingString:number];
     [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
 }
 

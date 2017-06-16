@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 
+#define kMaxLength 11
+
 @interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
@@ -88,6 +90,7 @@
 
 - (IBAction)clear {
     self.resultLabel.text = @"0";
+    [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
 }
 
 - (IBAction)opposite {
@@ -100,12 +103,24 @@
 
 - (void)appendNumber:(NSString *)number
 {
+    if (self.resultLabel.text.length > (kMaxLength - 1)) return;
     if ([self.resultLabel.text isEqualToString:@"0"] && ![number isEqualToString:@"."]) {
         self.resultLabel.text = @"";
     }
     NSString *tempStr = self.resultLabel.text;
     self.resultLabel.text = [tempStr stringByAppendingString:number];
-    
+    [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
+}
+
+- (void)adjustResultLabelSizeFontWithResultStr:(NSString *)resultStr
+{
+    if (resultStr.length <= 6) {
+        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:80]];
+    } else if (resultStr.length > 6 && resultStr.length <= 9) {
+        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:60]];
+    } else if (resultStr.length > 9 && resultStr.length <= 11) {
+        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:50]];
+    }
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle

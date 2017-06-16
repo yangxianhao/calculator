@@ -180,7 +180,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0pe-FI-w1N">
-                                        <rect key="frame" x="1.5" y="1.5" width="92.5" height="92.5"/>
+                                        <rect key="frame" x="1.5" y="2" width="92.5" height="92.5"/>
                                         <color key="backgroundColor" red="0.90980392160000001" green="0.3411764706" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" image="ac"/>
                                         <state key="selected" image="c"/>
@@ -189,7 +189,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrL-js-pcV">
-                                        <rect key="frame" x="94.5" y="1.5" width="92.5" height="92.5"/>
+                                        <rect key="frame" x="94.5" y="2" width="92.5" height="92.5"/>
                                         <color key="backgroundColor" red="0.90980392160000001" green="0.3411764706" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" image="opposite">
@@ -200,7 +200,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tr4-eq-iUf">
-                                        <rect key="frame" x="187.5" y="1.5" width="92.5" height="92.5"/>
+                                        <rect key="frame" x="187.5" y="2" width="92.5" height="92.5"/>
                                         <color key="backgroundColor" red="0.90980392160000001" green="0.3411764706" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" image="percentage">
@@ -211,7 +211,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ie-ZR-cnu">
-                                        <rect key="frame" x="280.5" y="1.5" width="93" height="92.5"/>
+                                        <rect key="frame" x="280.5" y="2" width="93" height="92.5"/>
                                         <color key="backgroundColor" red="0.90980392160000001" green="0.3411764706" blue="0.19215686269999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" image="divide">
@@ -348,6 +348,7 @@
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="clearBtn" destination="0pe-FI-w1N" id="t24-C1-hkq"/>
+                        <outlet property="headView" destination="syC-Qy-qLI" id="ji5-Jd-5zc"/>
                         <outlet property="resultLabel" destination="etM-9e-0Us" id="595-3h-Ikk"/>
                     </connections>
                 </viewController>

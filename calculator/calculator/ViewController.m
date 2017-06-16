@@ -14,6 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIButton *clearBtn;
+@property (weak, nonatomic) IBOutlet UIView *headView;
 
 @end
 
@@ -22,7 +23,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHeadView)];
+    swipe.direction = UISwipeGestureRecognizerDirectionLeft | UISwipeGestureRecognizerDirectionRight;
+    [self.headView addGestureRecognizer:swipe];
+}
+
+- (void)swipeHeadView
+{
+    if ([self.resultLabel.text isEqualToString:@"0"]) return;
+    NSMutableString *tempStr = [NSMutableString stringWithString:self.resultLabel.text];
+    [tempStr deleteCharactersInRange:NSMakeRange(tempStr.length - 1, 1)];
+    if (tempStr.length == 0) {
+        self.resultLabel.text = @"0";
+    } else {
+        self.resultLabel.text = tempStr;
+    }
+    [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
 }
 
 - (IBAction)zero {

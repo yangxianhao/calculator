@@ -510,6 +510,7 @@
 				19BAF81B1EF2DAA30043A0D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		19BAF81C1EF2DAA30043A0D4 /* Build configuration list for PBXNativeTarget "calculatorTests" */ = {
 			isa = XCConfigurationList;
@@ -518,6 +519,7 @@
 				19BAF81E1EF2DAA30043A0D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		19BAF81F1EF2DAA30043A0D4 /* Build configuration list for PBXNativeTarget "calculatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -526,6 +528,7 @@
 				19BAF8211EF2DAA30043A0D4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

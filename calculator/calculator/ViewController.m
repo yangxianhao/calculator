@@ -103,7 +103,8 @@
 }
 
 - (IBAction)equal {
-    
+    self.resultLabel.text = @"";
+    [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
 }
 
 - (IBAction)clear {
@@ -137,8 +138,8 @@
         [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:80]];
     } else if (resultStr.length > 6 && resultStr.length <= 9) {
         [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:60]];
-    } else if (resultStr.length > 9 && resultStr.length <= 11) {
-        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:50]];
+    } else {
+        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:45]];
     }
 }
 

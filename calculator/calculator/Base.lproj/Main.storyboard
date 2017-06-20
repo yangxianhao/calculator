@@ -184,7 +184,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" backgroundImage="ac_normal"/>
-                                        <state key="selected" image="c"/>
+                                        <state key="selected" backgroundImage="c_normal"/>
                                         <connections>
                                             <action selector="clear" destination="BYZ-38-t0r" eventType="touchUpInside" id="fW6-hz-8oQ"/>
                                         </connections>
@@ -371,7 +371,7 @@
         <image name="9_normal" width="185" height="185"/>
         <image name="ac_normal" width="185" height="185"/>
         <image name="add_normal" width="186" height="185"/>
-        <image name="c" width="185" height="185"/>
+        <image name="c_normal" width="185" height="185"/>
         <image name="divide_normal" width="186" height="185"/>
         <image name="equal_normal" width="186" height="186"/>
         <image name="minus_normal" width="186" height="186"/>

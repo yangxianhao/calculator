@@ -15,6 +15,14 @@
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIButton *clearBtn;
 @property (weak, nonatomic) IBOutlet UIView *headView;
+@property (weak, nonatomic) IBOutlet UIButton *addBtn;
+@property (weak, nonatomic) IBOutlet UIButton *minusBtn;
+@property (weak, nonatomic) IBOutlet UIButton *timesBtn;
+@property (weak, nonatomic) IBOutlet UIButton *divideBtn;
+
+@property (nonatomic, strong) UIButton *selBtn;
+@property (nonatomic, copy, readwrite) NSString *lastInputNumberStr;
+@property (nonatomic, assign, getter=isClearResult) BOOL clearResult;
 
 @end
 
@@ -45,72 +53,120 @@
 #pragma mark - xib action
 - (IBAction)zero {
     if ([self.resultLabel.text isEqualToString:@"0"]) return;
+    [self setupResultLabelWithText:@""];
     [self appendNumber:@"0"];
 }
 
 - (IBAction)one {
+    [self setupResultLabelWithText:@""];
     [self appendNumber:@"1"];
 }
 
 - (IBAction)two {
+    [self setupResultLabelWithText:@""];
     [self appendNumber:@"2"];
 }
 
 - (IBAction)three {
+    [self setupResultLabelWithText:@""];
     [self appendNumber:@"3"];
 }
 
 - (IBAction)four {
+    [self setupResultLabelWithText:@""];
     [self appendNumber:@"4"];
 }
 
 - (IBAction)five {
+    [self setupResultLabelWithText:@""];
     [self appendNumber:@"5"];
 }
 
 - (IBAction)six {
+    [self setupResultLabelWithText:@""];
     [self appendNumber:@"6"];
 }
 
 - (IBAction)seven {
+    [self setupResultLabelWithText:@""];
     [self appendNumber:@"7"];
 }
 
 - (IBAction)eight {
+    [self setupResultLabelWithText:@""];
     [self appendNumber:@"8"];
 }
 
 - (IBAction)nine {
+    [self setupResultLabelWithText:@""];
     [self appendNumber:@"9"];
 }
 
 - (IBAction)point {
+    [self setupResultLabelWithText:@"0"];
     [self appendNumber:@"."];
 }
 
+- (void)setupResultLabelWithText:(NSString *)text
+{
+    if (self.isClearResult) {
+        self.selBtn.selected = NO;
+        self.resultLabel.text = text;
+        self.clearResult = NO;
+    }
+}
+
+#pragma mark - +
 - (IBAction)add {
-    
+    self.lastInputNumberStr = self.resultLabel.text;
+    self.addBtn.selected = YES;
+    self.selBtn = self.addBtn;
+    self.clearResult = YES;
 }
 
+#pragma mark - -
 - (IBAction)minus {
-    
+    self.lastInputNumberStr = self.resultLabel.text;
+    self.minusBtn.selected = YES;
+    self.selBtn = self.minusBtn;
+    self.clearResult = YES;
 }
 
+#pragma mark - *
 - (IBAction)times {
-    
+    self.lastInputNumberStr = self.resultLabel.text;
+    self.timesBtn.selected = YES;
+    self.selBtn = self.timesBtn;
+    self.clearResult = YES;
 }
 
+#pragma mark - /
 - (IBAction)divide {
-    
-    
+    self.lastInputNumberStr = self.resultLabel.text;
+    self.divideBtn.selected = YES;
+    self.selBtn = self.divideBtn;
+    self.clearResult = YES;
 }
 
+#pragma mark - =
 - (IBAction)equal {
-    self.resultLabel.text = @"";
+//    self.resultLabel.text = @"134,7682,8186";
+    if (self.selBtn == self.addBtn) {
+        self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] + [self.resultLabel.text integerValue]];
+    } else if (self.selBtn == self.minusBtn) {
+        self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] - [self.resultLabel.text integerValue]];
+    } else if (self.selBtn == self.timesBtn) {
+        self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] * [self.resultLabel.text integerValue]];
+    } else {
+        self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] / [self.resultLabel.text integerValue]];
+    }
     [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
+    self.selBtn = nil;
 }
 
+#pragma mark - c
 - (IBAction)clear {
+    self.selBtn = nil;
     self.clearBtn.selected = NO;
     self.resultLabel.text = @"0";
     [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
@@ -153,6 +209,5 @@
 {
     return UIStatusBarStyleLightContent;
 }
-
 
 @end

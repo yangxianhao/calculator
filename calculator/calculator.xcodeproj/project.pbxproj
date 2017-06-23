@@ -15,6 +15,8 @@
 		19BAF7FF1EF2DAA30043A0D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 19BAF7FD1EF2DAA30043A0D4 /* LaunchScreen.storyboard */; };
 		19BAF80A1EF2DAA30043A0D4 /* calculatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAF8091EF2DAA30043A0D4 /* calculatorTests.m */; };
 		19BAF8151EF2DAA30043A0D4 /* calculatorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAF8141EF2DAA30043A0D4 /* calculatorUITests.m */; };
+		E7438A131EFCFBD4005604FC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7438A111EFCFBD4005604FC /* SettingViewController.m */; };
+		E7438A141EFCFBD4005604FC /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7438A121EFCFBD4005604FC /* SettingViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		19BAF8101EF2DAA30043A0D4 /* calculatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = calculatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		19BAF8141EF2DAA30043A0D4 /* calculatorUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = calculatorUITests.m; sourceTree = "<group>"; };
 		19BAF8161EF2DAA30043A0D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7438A101EFCFBD4005604FC /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		E7438A111EFCFBD4005604FC /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		E7438A121EFCFBD4005604FC /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +111,9 @@
 				19BAF7F51EF2DAA30043A0D4 /* ViewController.h */,
 				19BAF7F61EF2DAA30043A0D4 /* ViewController.m */,
 				19BAF7F81EF2DAA30043A0D4 /* Main.storyboard */,
+				E7438A101EFCFBD4005604FC /* SettingViewController.h */,
+				E7438A111EFCFBD4005604FC /* SettingViewController.m */,
+				E7438A121EFCFBD4005604FC /* SettingViewController.xib */,
 				19BAF7FB1EF2DAA30043A0D4 /* Assets.xcassets */,
 				19BAF7FD1EF2DAA30043A0D4 /* LaunchScreen.storyboard */,
 				19BAF8001EF2DAA30043A0D4 /* Info.plist */,
@@ -250,6 +258,7 @@
 				19BAF7FF1EF2DAA30043A0D4 /* LaunchScreen.storyboard in Resources */,
 				19BAF7FC1EF2DAA30043A0D4 /* Assets.xcassets in Resources */,
 				19BAF7FA1EF2DAA30043A0D4 /* Main.storyboard in Resources */,
+				E7438A141EFCFBD4005604FC /* SettingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +286,7 @@
 				19BAF7F71EF2DAA30043A0D4 /* ViewController.m in Sources */,
 				19BAF7F41EF2DAA30043A0D4 /* AppDelegate.m in Sources */,
 				19BAF7F11EF2DAA30043A0D4 /* main.m in Sources */,
+				E7438A131EFCFBD4005604FC /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

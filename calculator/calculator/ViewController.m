@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "SettingViewController.h"
 
 #define kMaxLength 11
 
@@ -23,6 +24,7 @@
 @property (nonatomic, strong) UIButton *selBtn;
 @property (nonatomic, copy, readwrite) NSString *lastInputNumberStr;
 @property (nonatomic, assign, getter=isClearResult) BOOL clearResult;
+@property (nonatomic, assign) NSInteger counter;
 
 @end
 
@@ -31,9 +33,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    // 左右删除手势
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHeadView)];
     swipe.direction = UISwipeGestureRecognizerDirectionLeft | UISwipeGestureRecognizerDirectionRight;
     [self.headView addGestureRecognizer:swipe];
+    // 后门入口
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHeadView)];
+    [self.headView addGestureRecognizer:tap];
+}
+
+#pragma mark - 后门入口
+- (void)tapHeadView
+{
+    self.counter++;
+    if (self.counter == 10) {
+        SettingViewController *settingController = [[SettingViewController alloc] init];
+        [self presentViewController:settingController animated:YES completion:^{
+            self.counter = 0;
+        }];
+    }
 }
 
 #pragma mark - 左右扫手势

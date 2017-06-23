@@ -120,6 +120,7 @@
 - (IBAction)add {
     self.lastInputNumberStr = self.resultLabel.text;
     self.addBtn.selected = YES;
+    self.selBtn.selected = NO;
     self.selBtn = self.addBtn;
     self.clearResult = YES;
 }
@@ -128,6 +129,7 @@
 - (IBAction)minus {
     self.lastInputNumberStr = self.resultLabel.text;
     self.minusBtn.selected = YES;
+    self.selBtn.selected = NO;
     self.selBtn = self.minusBtn;
     self.clearResult = YES;
 }
@@ -136,6 +138,7 @@
 - (IBAction)times {
     self.lastInputNumberStr = self.resultLabel.text;
     self.timesBtn.selected = YES;
+    self.selBtn.selected = NO;
     self.selBtn = self.timesBtn;
     self.clearResult = YES;
 }
@@ -144,6 +147,7 @@
 - (IBAction)divide {
     self.lastInputNumberStr = self.resultLabel.text;
     self.divideBtn.selected = YES;
+    self.selBtn.selected = NO;
     self.selBtn = self.divideBtn;
     self.clearResult = YES;
 }

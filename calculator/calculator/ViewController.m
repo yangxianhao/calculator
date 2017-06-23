@@ -114,6 +114,7 @@
         self.selBtn.selected = NO;
         self.resultLabel.text = text;
         self.clearResult = NO;
+        [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
     }
 }
 
@@ -186,7 +187,20 @@
 }
 
 - (IBAction)percentage {
-    
+    self.resultLabel.text = [NSString stringWithFormat:@"%f", [self.resultLabel.text floatValue] / 100.0];
+    // 剔除最后的0
+    NSMutableString *tempStr = [NSMutableString stringWithString:self.resultLabel.text];
+    for (NSInteger i = (self.resultLabel.text.length - 1); i > 0; i--) {
+        unichar subChar = [self.resultLabel.text characterAtIndex:i];
+        if (subChar == 48 || subChar == 46) {
+            [tempStr deleteCharactersInRange:NSMakeRange(i, 1)];
+        } else {
+            break;
+        }
+    }
+    // 重新赋值
+    self.resultLabel.text = tempStr;
+    [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
 }
 
 #pragma mark - 添加数字

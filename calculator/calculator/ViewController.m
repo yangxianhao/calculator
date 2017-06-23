@@ -120,40 +120,36 @@
 
 #pragma mark - +
 - (IBAction)add {
-    if (self.selBtn == self.addBtn) return;
     self.lastInputNumberStr = self.resultLabel.text;
-    self.addBtn.selected = YES;
     self.selBtn.selected = NO;
+    self.addBtn.selected = YES;
     self.selBtn = self.addBtn;
     self.clearResult = YES;
 }
 
 #pragma mark - -
 - (IBAction)minus {
-    if (self.selBtn == self.minusBtn) return;
     self.lastInputNumberStr = self.resultLabel.text;
-    self.minusBtn.selected = YES;
     self.selBtn.selected = NO;
+    self.minusBtn.selected = YES;
     self.selBtn = self.minusBtn;
     self.clearResult = YES;
 }
 
 #pragma mark - *
 - (IBAction)times {
-    if (self.selBtn == self.timesBtn) return;
     self.lastInputNumberStr = self.resultLabel.text;
-    self.timesBtn.selected = YES;
     self.selBtn.selected = NO;
+    self.timesBtn.selected = YES;
     self.selBtn = self.timesBtn;
     self.clearResult = YES;
 }
 
 #pragma mark - /
 - (IBAction)divide {
-    if (self.selBtn == self.divideBtn) return;
     self.lastInputNumberStr = self.resultLabel.text;
-    self.divideBtn.selected = YES;
     self.selBtn.selected = NO;
+    self.divideBtn.selected = YES;
     self.selBtn = self.divideBtn;
     self.clearResult = YES;
 }

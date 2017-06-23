@@ -103,6 +103,7 @@
 }
 
 - (IBAction)point {
+    if ([self.resultLabel.text containsString:@"."]) return;
     [self setupResultLabelWithText:@"0"];
     [self appendNumber:@"."];
 }
@@ -118,6 +119,7 @@
 
 #pragma mark - +
 - (IBAction)add {
+    if (self.selBtn == self.addBtn) return;
     self.lastInputNumberStr = self.resultLabel.text;
     self.addBtn.selected = YES;
     self.selBtn.selected = NO;
@@ -127,6 +129,7 @@
 
 #pragma mark - -
 - (IBAction)minus {
+    if (self.selBtn == self.minusBtn) return;
     self.lastInputNumberStr = self.resultLabel.text;
     self.minusBtn.selected = YES;
     self.selBtn.selected = NO;
@@ -136,6 +139,7 @@
 
 #pragma mark - *
 - (IBAction)times {
+    if (self.selBtn == self.timesBtn) return;
     self.lastInputNumberStr = self.resultLabel.text;
     self.timesBtn.selected = YES;
     self.selBtn.selected = NO;
@@ -145,6 +149,7 @@
 
 #pragma mark - /
 - (IBAction)divide {
+    if (self.selBtn == self.divideBtn) return;
     self.lastInputNumberStr = self.resultLabel.text;
     self.divideBtn.selected = YES;
     self.selBtn.selected = NO;

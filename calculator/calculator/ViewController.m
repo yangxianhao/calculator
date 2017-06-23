@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SettingViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
 
 #define kMaxLength 11
 
@@ -304,6 +305,7 @@
         NSString *shakeResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
         self.resultLabel.text = shakeResult;
         [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:30]];
+        AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
 }
 

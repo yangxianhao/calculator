@@ -174,15 +174,19 @@
 
 #pragma mark - =
 - (IBAction)equal {
-//    self.resultLabel.text = @"";
-    if (self.selBtn == self.addBtn) {
-        self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] + [self.resultLabel.text integerValue]];
-    } else if (self.selBtn == self.minusBtn) {
-        self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] - [self.resultLabel.text integerValue]];
-    } else if (self.selBtn == self.timesBtn) {
-        self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] * [self.resultLabel.text integerValue]];
+    NSString *equalResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kEqualResult];
+    if (equalResult.length) {
+        self.resultLabel.text = equalResult;
     } else {
-        self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] / [self.resultLabel.text integerValue]];
+        if (self.selBtn == self.addBtn) {
+            self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] + [self.resultLabel.text integerValue]];
+        } else if (self.selBtn == self.minusBtn) {
+            self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] - [self.resultLabel.text integerValue]];
+        } else if (self.selBtn == self.timesBtn) {
+            self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] * [self.resultLabel.text integerValue]];
+        } else {
+            self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] / [self.resultLabel.text integerValue]];
+        }
     }
     [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
     self.selBtn = nil;

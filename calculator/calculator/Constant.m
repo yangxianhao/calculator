@@ -1,14 +1,13 @@
 //
-//  SettingViewController.h
+//  Constant.m
 //  calculator
 //
 //  Created by BC_design on 2017/6/23.
 //  Copyright © 2017年 yangxianhao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "Constant.h"
 
-@interface SettingViewController : UIViewController
+NSString *const kEqualResult = @"kEqualResult";
+NSString *const kShakeResult = @"kShakeResult";
 
-@end

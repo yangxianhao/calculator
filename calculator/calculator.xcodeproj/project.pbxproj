@@ -17,6 +17,7 @@
 		19BAF8151EF2DAA30043A0D4 /* calculatorUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 19BAF8141EF2DAA30043A0D4 /* calculatorUITests.m */; };
 		E7438A131EFCFBD4005604FC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7438A111EFCFBD4005604FC /* SettingViewController.m */; };
 		E7438A141EFCFBD4005604FC /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7438A121EFCFBD4005604FC /* SettingViewController.xib */; };
+		E7438A171EFD005D005604FC /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = E7438A161EFD005D005604FC /* Constant.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		E7438A101EFCFBD4005604FC /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
 		E7438A111EFCFBD4005604FC /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
 		E7438A121EFCFBD4005604FC /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		E7438A151EFD005D005604FC /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
+		E7438A161EFD005D005604FC /* Constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constant.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +121,8 @@
 				19BAF7FD1EF2DAA30043A0D4 /* LaunchScreen.storyboard */,
 				19BAF8001EF2DAA30043A0D4 /* Info.plist */,
 				19BAF7EF1EF2DAA30043A0D4 /* Supporting Files */,
+				E7438A151EFD005D005604FC /* Constant.h */,
+				E7438A161EFD005D005604FC /* Constant.m */,
 			);
 			path = calculator;
 			sourceTree = "<group>";
@@ -286,6 +291,7 @@
 				19BAF7F71EF2DAA30043A0D4 /* ViewController.m in Sources */,
 				19BAF7F41EF2DAA30043A0D4 /* AppDelegate.m in Sources */,
 				19BAF7F11EF2DAA30043A0D4 /* main.m in Sources */,
+				E7438A171EFD005D005604FC /* Constant.m in Sources */,
 				E7438A131EFCFBD4005604FC /* SettingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

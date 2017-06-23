@@ -11,7 +11,7 @@
 
 #define kMaxLength 11
 
-@interface ViewController ()
+@interface ViewController () <UIAccelerometerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
 @property (weak, nonatomic) IBOutlet UIButton *clearBtn;
@@ -25,6 +25,7 @@
 @property (nonatomic, copy, readwrite) NSString *lastInputNumberStr;
 @property (nonatomic, assign, getter=isClearResult) BOOL clearResult;
 @property (nonatomic, assign) NSInteger counter;
+@property (nonatomic, strong) UIAccelerometer *accelerometer;
 
 @end
 
@@ -40,6 +41,22 @@
     // 后门入口
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHeadView)];
     [self.headView addGestureRecognizer:tap];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    NSString *shakeResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
+    if (shakeResult.length) {
+        [self setupAccelerometer];
+    }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    self.accelerometer.updateInterval = MAXFLOAT;
 }
 
 #pragma mark - 后门入口
@@ -263,6 +280,31 @@
         }
     }
     return tempStr;
+}
+
+#pragma mark - 初始化摇一摇加速剂
+- (void)setupAccelerometer
+{
+    if (!self.accelerometer) {
+        self.accelerometer = [UIAccelerometer sharedAccelerometer];
+    }
+    self.accelerometer.delegate = self;
+    self.accelerometer.updateInterval = 1.0f;
+}
+
+#pragma mark - UIAccelerometerDelegate
+- (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
+{
+    NSLog(@"%s", __func__);
+    CGFloat x = acceleration.x;
+    CGFloat y = acceleration.y;
+    CGFloat z = acceleration.z;
+    CGFloat a = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
+    if (a > 4.0f) {
+        NSString *shakeResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
+        self.resultLabel.text = shakeResult;
+        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:30]];
+    }
 }
 
 @end

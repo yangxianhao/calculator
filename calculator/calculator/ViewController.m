@@ -160,7 +160,7 @@
 
 #pragma mark - =
 - (IBAction)equal {
-//    self.resultLabel.text = @"134,7682,8186";
+//    self.resultLabel.text = @"";
     if (self.selBtn == self.addBtn) {
         self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] + [self.resultLabel.text integerValue]];
     } else if (self.selBtn == self.minusBtn) {

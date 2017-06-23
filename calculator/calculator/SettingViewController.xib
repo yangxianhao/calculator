@@ -32,7 +32,7 @@
                         <action selector="close" destination="-1" eventType="touchUpInside" id="gTy-Pt-mmm"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="输入要显示的计算结果" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MNg-bH-Qdb">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="输入要显示的计算结果" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="MNg-bH-Qdb">
                     <rect key="frame" x="20" y="70" width="335" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="I3B-sh-LPj"/>
@@ -41,7 +41,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="输入摇一摇之后的结果" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="THk-Ie-jwM">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="输入摇一摇之后的结果" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="THk-Ie-jwM">
                     <rect key="frame" x="20" y="130" width="335" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="lPe-WV-ZZI"/>

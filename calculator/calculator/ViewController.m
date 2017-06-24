@@ -224,6 +224,7 @@
 
 #pragma mark - c
 - (IBAction)clear {
+    i = 0;
     self.selBtn.selected = NO;
     self.selBtn = nil;
     self.clearBtn.selected = NO;

@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SettingViewController.h"
+#import "NSString+Chinese.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 #define kMaxLength 11
@@ -253,12 +254,16 @@
 #pragma mark - 调整数字大小
 - (void)adjustResultLabelSizeFontWithResultStr:(NSString *)resultStr
 {
-    if (resultStr.length <= 6) {
-        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:80]];
-    } else if (resultStr.length > 6 && resultStr.length <= 9) {
-        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:60]];
+    if ([resultStr isChinese] || [resultStr includeChinese]) {
+        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:30]];
     } else {
-        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:45]];
+        if (resultStr.length <= 6) {
+            [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:80]];
+        } else if (resultStr.length > 6 && resultStr.length <= 9) {
+            [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:60]];
+        } else {
+            [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:45]];
+        }
     }
 }
 
@@ -312,7 +317,7 @@ static int i = 0;
         self.enter = NO;
         NSString *shakeResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
         self.resultLabel.text = shakeResult;
-        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:30]];
+        [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
     }
 }

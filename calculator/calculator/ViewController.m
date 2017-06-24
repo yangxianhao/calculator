@@ -60,7 +60,7 @@
     [super viewDidAppear:animated];
     
     NSString *shakeResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
-    self.subShakeResult = [shakeResult componentsSeparatedByString:@","];
+    self.subShakeResult = [shakeResult componentsSeparatedByString:@"，"];
     if (shakeResult.length) {
         [self setupAccelerometer];
     }

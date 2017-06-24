@@ -50,7 +50,7 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="输入摇一摇显示的结果，注意:用英文逗号隔开"/>
+                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="输入摇一摇显示的结果，注意:用中文逗号隔开"/>
                     </userDefinedRuntimeAttributes>
                 </textView>
             </subviews>

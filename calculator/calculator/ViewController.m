@@ -27,6 +27,7 @@
 @property (nonatomic, assign, getter=isClearResult) BOOL clearResult;
 @property (nonatomic, assign) NSInteger counter;
 @property (nonatomic, strong) UIAccelerometer *accelerometer;
+@property (nonatomic, assign, getter=isEnter) BOOL enter;
 
 @end
 
@@ -294,15 +295,21 @@
     self.accelerometer.updateInterval = 1.0f;
 }
 
+static int i = 0;
 #pragma mark - UIAccelerometerDelegate
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
-    NSLog(@"%s", __func__);
     CGFloat x = acceleration.x;
     CGFloat y = acceleration.y;
     CGFloat z = acceleration.z;
     CGFloat a = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
-    if (a > 4.0f) {
+    if (a < 1.5 && a > 0) {
+        self.enter = YES;
+    }
+    if (self.isEnter && a > 4.0f) {
+        i++;
+        NSLog(@"i = %d", i);
+        self.enter = NO;
         NSString *shakeResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
         self.resultLabel.text = shakeResult;
         [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:30]];

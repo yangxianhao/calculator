@@ -11,7 +11,7 @@
 @interface SettingViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField *equalResultTextField;
-@property (weak, nonatomic) IBOutlet UITextField *shakeResultTextField;
+@property (weak, nonatomic) IBOutlet UITextView *shakeResultTextView;
 
 @end
 
@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.equalResultTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:kEqualResult];
-    self.shakeResultTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
+    self.shakeResultTextView.text = [[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -31,7 +31,7 @@
 - (IBAction)close {
     [[NSUserDefaults standardUserDefaults] setObject:self.equalResultTextField.text forKey:kEqualResult];
     [[NSUserDefaults standardUserDefaults] synchronize];
-    [[NSUserDefaults standardUserDefaults] setObject:self.shakeResultTextField.text forKey:kShakeResult];
+    [[NSUserDefaults standardUserDefaults] setObject:self.shakeResultTextView.text forKey:kShakeResult];
     [[NSUserDefaults standardUserDefaults] synchronize];
     [self.view endEditing:YES];
     [self dismissViewControllerAnimated:YES completion:nil];

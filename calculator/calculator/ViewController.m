@@ -29,10 +29,19 @@
 @property (nonatomic, assign) NSInteger counter;
 @property (nonatomic, strong) UIAccelerometer *accelerometer;
 @property (nonatomic, assign, getter=isEnter) BOOL enter;
+@property (nonatomic, strong) NSArray *subShakeResult;
 
 @end
 
 @implementation ViewController
+
+- (NSArray *)subShakeResult
+{
+    if (!_subShakeResult) {
+        _subShakeResult = [NSArray array];
+    }
+    return _subShakeResult;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -51,6 +60,7 @@
     [super viewDidAppear:animated];
     
     NSString *shakeResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
+    self.subShakeResult = [shakeResult componentsSeparatedByString:@","];
     if (shakeResult.length) {
         [self setupAccelerometer];
     }
@@ -311,14 +321,13 @@ static int i = 0;
     if (a < 1.5 && a > 0) {
         self.enter = YES;
     }
-    if (self.isEnter && a > 4.0f) {
-        i++;
+    if (self.isEnter && a > 4.0f && i < self.subShakeResult.count) {
         NSLog(@"i = %d", i);
         self.enter = NO;
-        NSString *shakeResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
-        self.resultLabel.text = shakeResult;
+        self.resultLabel.text = self.subShakeResult[i];
         [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        i++;
     }
 }
 

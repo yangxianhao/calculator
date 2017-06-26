@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "SettingViewController.h"
+#import "NSString+Chinese.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 #define kMaxLength 11
@@ -27,10 +28,20 @@
 @property (nonatomic, assign, getter=isClearResult) BOOL clearResult;
 @property (nonatomic, assign) NSInteger counter;
 @property (nonatomic, strong) UIAccelerometer *accelerometer;
+@property (nonatomic, assign, getter=isEnter) BOOL enter;
+@property (nonatomic, strong) NSArray *subShakeResult;
 
 @end
 
 @implementation ViewController
+
+- (NSArray *)subShakeResult
+{
+    if (!_subShakeResult) {
+        _subShakeResult = [NSArray array];
+    }
+    return _subShakeResult;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,6 +60,7 @@
     [super viewDidAppear:animated];
     
     NSString *shakeResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
+    self.subShakeResult = [shakeResult componentsSeparatedByString:@"，"];
     if (shakeResult.length) {
         [self setupAccelerometer];
     }
@@ -212,6 +224,7 @@
 
 #pragma mark - c
 - (IBAction)clear {
+    i = 0;
     self.selBtn.selected = NO;
     self.selBtn = nil;
     self.clearBtn.selected = NO;
@@ -252,12 +265,16 @@
 #pragma mark - 调整数字大小
 - (void)adjustResultLabelSizeFontWithResultStr:(NSString *)resultStr
 {
-    if (resultStr.length <= 6) {
-        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:80]];
-    } else if (resultStr.length > 6 && resultStr.length <= 9) {
-        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:60]];
+    if ([resultStr isChinese] || [resultStr includeChinese]) {
+        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:30]];
     } else {
-        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:45]];
+        if (resultStr.length <= 6) {
+            [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:80]];
+        } else if (resultStr.length > 6 && resultStr.length <= 9) {
+            [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:60]];
+        } else {
+            [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:45]];
+        }
     }
 }
 
@@ -294,19 +311,24 @@
     self.accelerometer.updateInterval = 1.0f;
 }
 
+static int i = 0;
 #pragma mark - UIAccelerometerDelegate
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
-    NSLog(@"%s", __func__);
     CGFloat x = acceleration.x;
     CGFloat y = acceleration.y;
     CGFloat z = acceleration.z;
     CGFloat a = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
-    if (a > 4.0f) {
-        NSString *shakeResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
-        self.resultLabel.text = shakeResult;
-        [self.resultLabel setFont:[UIFont fontWithName:@".SFUIDisplay-Thin" size:30]];
+    if (a < 1.5 && a > 0) {
+        self.enter = YES;
+    }
+    if (self.isEnter && a > 4.0f && i < self.subShakeResult.count) {
+        NSLog(@"i = %d", i);
+        self.enter = NO;
+        self.resultLabel.text = self.subShakeResult[i];
+        [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
+        i++;
     }
 }
 

@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController">
             <connections>
                 <outlet property="equalResultTextField" destination="MNg-bH-Qdb" id="mrT-rb-szU"/>
-                <outlet property="shakeResultTextField" destination="THk-Ie-jwM" id="ScF-Ww-1L7"/>
+                <outlet property="shakeResultTextView" destination="Zhr-Tj-rr1" id="Xu7-Ce-bSs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -41,26 +41,29 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="输入摇一摇之后的结果" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="THk-Ie-jwM">
-                    <rect key="frame" x="20" y="130" width="335" height="40"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Zhr-Tj-rr1">
+                    <rect key="frame" x="20" y="130" width="335" height="100"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="lPe-WV-ZZI"/>
+                        <constraint firstAttribute="height" constant="100" id="K6N-Ub-pmH"/>
                     </constraints>
-                    <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="输入摇一摇显示的结果，注意:用中文逗号隔开，建议每句话不要超过10个汉字，一个表情占2个汉字"/>
+                    </userDefinedRuntimeAttributes>
+                </textView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="MNg-bH-Qdb" secondAttribute="trailing" constant="20" id="8QJ-Vp-UQs"/>
-                <constraint firstAttribute="trailing" secondItem="THk-Ie-jwM" secondAttribute="trailing" constant="20" id="Agm-Gr-oMT"/>
+                <constraint firstItem="Zhr-Tj-rr1" firstAttribute="top" secondItem="MNg-bH-Qdb" secondAttribute="bottom" constant="20" id="FoY-O3-6dX"/>
                 <constraint firstItem="MNg-bH-Qdb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="PXX-sD-XAI"/>
+                <constraint firstItem="Zhr-Tj-rr1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Sks-ri-Wso"/>
                 <constraint firstItem="jEZ-2o-XHv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Vin-0R-MTJ"/>
-                <constraint firstItem="THk-Ie-jwM" firstAttribute="top" secondItem="MNg-bH-Qdb" secondAttribute="bottom" constant="20" id="gny-vF-guJ"/>
-                <constraint firstItem="THk-Ie-jwM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="l6r-Yd-fpj"/>
                 <constraint firstItem="MNg-bH-Qdb" firstAttribute="top" secondItem="jEZ-2o-XHv" secondAttribute="bottom" constant="20" id="m0q-HR-YC4"/>
                 <constraint firstItem="jEZ-2o-XHv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="ody-TG-2bg"/>
+                <constraint firstAttribute="trailing" secondItem="Zhr-Tj-rr1" secondAttribute="trailing" constant="20" id="zue-zU-bWY"/>
             </constraints>
         </view>
     </objects>

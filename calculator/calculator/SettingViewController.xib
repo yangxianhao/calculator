@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingViewController">
             <connections>
                 <outlet property="equalResultTextField" destination="MNg-bH-Qdb" id="mrT-rb-szU"/>
+                <outlet property="helpTextView" destination="pCa-sm-6BN" id="h1d-LE-Lti"/>
                 <outlet property="shakeResultTextView" destination="Zhr-Tj-rr1" id="Xu7-Ce-bSs"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -53,18 +54,45 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="输入摇一摇显示的结果，注意:用中文逗号隔开，建议每句话不要超过10个汉字，一个表情占2个汉字"/>
                     </userDefinedRuntimeAttributes>
                 </textView>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcA-uQ-8D6">
+                    <rect key="frame" x="309" y="20" width="46" height="30"/>
+                    <state key="normal" title="HELP"/>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="READ ME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tnH-eI-b2L">
+                    <rect key="frame" x="20" y="260" width="72.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pCa-sm-6BN">
+                    <rect key="frame" x="20" y="289" width="335" height="358"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="pCa-sm-6BN" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="0rR-tv-siI"/>
                 <constraint firstAttribute="trailing" secondItem="MNg-bH-Qdb" secondAttribute="trailing" constant="20" id="8QJ-Vp-UQs"/>
+                <constraint firstItem="ZcA-uQ-8D6" firstAttribute="height" secondItem="jEZ-2o-XHv" secondAttribute="height" id="Czl-OQ-TKf"/>
                 <constraint firstItem="Zhr-Tj-rr1" firstAttribute="top" secondItem="MNg-bH-Qdb" secondAttribute="bottom" constant="20" id="FoY-O3-6dX"/>
+                <constraint firstItem="ZcA-uQ-8D6" firstAttribute="top" secondItem="jEZ-2o-XHv" secondAttribute="top" id="LpG-KP-ZzH"/>
                 <constraint firstItem="MNg-bH-Qdb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="PXX-sD-XAI"/>
+                <constraint firstItem="ZcA-uQ-8D6" firstAttribute="width" secondItem="jEZ-2o-XHv" secondAttribute="width" id="Po1-DV-9W2"/>
                 <constraint firstItem="Zhr-Tj-rr1" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="Sks-ri-Wso"/>
+                <constraint firstAttribute="trailing" secondItem="ZcA-uQ-8D6" secondAttribute="trailing" constant="20" id="Tu1-h9-upm"/>
+                <constraint firstAttribute="bottom" secondItem="pCa-sm-6BN" secondAttribute="bottom" constant="20" id="V9a-lr-mdA"/>
                 <constraint firstItem="jEZ-2o-XHv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="Vin-0R-MTJ"/>
+                <constraint firstItem="pCa-sm-6BN" firstAttribute="top" secondItem="tnH-eI-b2L" secondAttribute="bottom" constant="8" id="ZPE-Nw-tz6"/>
+                <constraint firstAttribute="trailing" secondItem="pCa-sm-6BN" secondAttribute="trailing" constant="20" id="b4R-VS-PB1"/>
+                <constraint firstItem="tnH-eI-b2L" firstAttribute="top" secondItem="Zhr-Tj-rr1" secondAttribute="bottom" constant="30" id="jOj-FN-mbA"/>
                 <constraint firstItem="MNg-bH-Qdb" firstAttribute="top" secondItem="jEZ-2o-XHv" secondAttribute="bottom" constant="20" id="m0q-HR-YC4"/>
+                <constraint firstItem="tnH-eI-b2L" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="mmL-XS-5g8"/>
                 <constraint firstItem="jEZ-2o-XHv" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="20" id="ody-TG-2bg"/>
                 <constraint firstAttribute="trailing" secondItem="Zhr-Tj-rr1" secondAttribute="trailing" constant="20" id="zue-zU-bWY"/>
             </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
 </document>

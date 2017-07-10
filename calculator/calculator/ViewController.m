@@ -10,8 +10,16 @@
 #import "SettingViewController.h"
 #import "NSString+Chinese.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "GEStatusBar.h"
+#import "UIView+YXH.h"
 
 #define kMaxLength 11
+#define kStatusBarHeight 20
+#define kDuration 0.5
+#define kRandomColor [UIColor colorWithRed:gRandomInRange(0, 255)/255.0f green:gRandomInRange(0, 255)/255.0f blue:gRandomInRange(0, 255)/255.0f alpha:1.0f]
+#define gRandomInRange(__startIndex, __endIndex) (int)(arc4random_uniform((u_int32_t)(__endIndex-__startIndex+1)) + __startIndex) // __startIndex ~ __endIndex
+
+typedef void(^GCDOperation)();
 
 @interface ViewController () <UIAccelerometerDelegate>
 
@@ -30,6 +38,9 @@
 @property (nonatomic, strong) UIAccelerometer *accelerometer;
 @property (nonatomic, assign, getter=isEnter) BOOL enter;
 @property (nonatomic, strong) NSArray *subShakeResult;
+@property (nonatomic, strong) UIView *statusBar;
+@property (assign, nonatomic) CGPoint volecity;
+@property (nonatomic, strong) dispatch_source_t timer;
 
 @end
 
@@ -53,6 +64,9 @@
     // 后门入口
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapHeadView)];
     [self.headView addGestureRecognizer:tap];
+    
+    // 获取状态条
+    self.statusBar = [GEStatusBar statusBar];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -322,6 +336,18 @@ static int i = 0;
     if (a < 1.5 && a > 0) {
         self.enter = YES;
     }
+    if (i == self.subShakeResult.count) {
+        _volecity.y += (acceleration.y * 0.5);
+        self.statusBar.y -= _volecity.y;
+        if (self.statusBar.y < 0) {
+            self.statusBar.y = 0;
+            _volecity.y *= -0.5;
+        }
+        if (CGRectGetMaxY(self.statusBar.frame) > self.view.height) {
+            self.statusBar.y = self.view.height - kStatusBarHeight;
+            _volecity.y *= -0.5;
+        }
+    }
     if (self.isEnter && a > 4.0f && i < self.subShakeResult.count) {
         NSLog(@"i = %d", i);
         self.enter = NO;
@@ -329,7 +355,45 @@ static int i = 0;
         [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         i++;
+        if (i == self.subShakeResult.count) {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                self.accelerometer.updateInterval = 1 / 60.0;
+                self.timer = [self getGCDTimerWithOperation:^{
+                    self.statusBar.backgroundColor = kRandomColor;
+                }];
+            });
+        }
     }
+}
+
+- (dispatch_source_t)getGCDTimerWithOperation:(GCDOperation)operation
+{
+    //0.创建队列
+    dispatch_queue_t queue = dispatch_get_main_queue();
+    //1.创建GCD中的定时器
+    /*
+     第一个参数:创建source的类型 DISPATCH_SOURCE_TYPE_TIMER:定时器
+     第二个参数:0
+     第三个参数:0
+     第四个参数:队列
+     */
+    dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
+    
+    //2.设置时间等
+    /*
+     第一个参数:定时器对象
+     第二个参数:DISPATCH_TIME_NOW 表示从现在开始计时
+     第三个参数:间隔时间 GCD里面的时间 纳秒
+     第四个参数:精准度(表示允许的误差,0表示绝对精准)
+     */
+    dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, kDuration * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
+    
+    //3.要调用的任务
+    dispatch_source_set_event_handler(timer, operation);
+    
+    //4.开始执行
+    dispatch_resume(timer);
+    return timer;
 }
 
 @end

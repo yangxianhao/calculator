@@ -20,6 +20,8 @@
 		E7438A131EFCFBD4005604FC /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7438A111EFCFBD4005604FC /* SettingViewController.m */; };
 		E7438A141EFCFBD4005604FC /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7438A121EFCFBD4005604FC /* SettingViewController.xib */; };
 		E7438A171EFD005D005604FC /* Constant.m in Sources */ = {isa = PBXBuildFile; fileRef = E7438A161EFD005D005604FC /* Constant.m */; };
+		E7B664431F13595400E2A647 /* GEStatusBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B664421F13595400E2A647 /* GEStatusBar.m */; };
+		E7B664461F135A0D00E2A647 /* UIView+YXH.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B664451F135A0D00E2A647 /* UIView+YXH.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +67,10 @@
 		E7438A121EFCFBD4005604FC /* SettingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		E7438A151EFD005D005604FC /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		E7438A161EFD005D005604FC /* Constant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constant.m; sourceTree = "<group>"; };
+		E7B664411F13595400E2A647 /* GEStatusBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GEStatusBar.h; sourceTree = "<group>"; };
+		E7B664421F13595400E2A647 /* GEStatusBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GEStatusBar.m; sourceTree = "<group>"; };
+		E7B664441F135A0D00E2A647 /* UIView+YXH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YXH.h"; sourceTree = "<group>"; };
+		E7B664451F135A0D00E2A647 /* UIView+YXH.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YXH.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +133,10 @@
 				19BAF7FD1EF2DAA30043A0D4 /* LaunchScreen.storyboard */,
 				19BAF8001EF2DAA30043A0D4 /* Info.plist */,
 				19BAF7EF1EF2DAA30043A0D4 /* Supporting Files */,
+				E7B664441F135A0D00E2A647 /* UIView+YXH.h */,
+				E7B664451F135A0D00E2A647 /* UIView+YXH.m */,
+				E7B664411F13595400E2A647 /* GEStatusBar.h */,
+				E7B664421F13595400E2A647 /* GEStatusBar.m */,
 				E7438A151EFD005D005604FC /* Constant.h */,
 				E7438A161EFD005D005604FC /* Constant.m */,
 				19C419F01EFE58AC00259A8A /* NSString+Chinese.h */,
@@ -303,6 +313,8 @@
 				19BAF7F41EF2DAA30043A0D4 /* AppDelegate.m in Sources */,
 				19BAF7F11EF2DAA30043A0D4 /* main.m in Sources */,
 				E7438A171EFD005D005604FC /* Constant.m in Sources */,
+				E7B664461F135A0D00E2A647 /* UIView+YXH.m in Sources */,
+				E7B664431F13595400E2A647 /* GEStatusBar.m in Sources */,
 				E7438A131EFCFBD4005604FC /* SettingViewController.m in Sources */,
 				19C419F21EFE58AC00259A8A /* NSString+Chinese.m in Sources */,
 			);
@@ -455,7 +467,7 @@
 				INFOPLIST_FILE = calculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xianhao.yang.calculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calculator.bluechips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -468,7 +480,7 @@
 				INFOPLIST_FILE = calculator/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.xianhao.yang.calculator;
+				PRODUCT_BUNDLE_IDENTIFIER = com.calculator.bluechips;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -86,6 +86,12 @@ typedef void(^GCDOperation)();
     self.accelerometer.updateInterval = MAXFLOAT;
 }
 
+- (void)identicalStatusBar
+{
+    self.statusBar.origin = CGPointZero;
+    self.statusBar.backgroundColor = [UIColor clearColor];
+}
+
 #pragma mark - 后门入口
 - (void)tapHeadView
 {
@@ -238,11 +244,16 @@ typedef void(^GCDOperation)();
 
 #pragma mark - c
 - (IBAction)clear {
+    if (self.timer) {
+        dispatch_cancel(self.timer);
+    }
     i = 0;
     self.selBtn.selected = NO;
     self.selBtn = nil;
     self.clearBtn.selected = NO;
     self.resultLabel.text = @"0";
+    [self identicalStatusBar];
+    self.accelerometer.updateInterval = 1.0f;
     [self adjustResultLabelSizeFontWithResultStr:self.resultLabel.text];
 }
 
@@ -329,13 +340,16 @@ static int i = 0;
 #pragma mark - UIAccelerometerDelegate
 - (void)accelerometer:(UIAccelerometer *)accelerometer didAccelerate:(UIAcceleration *)acceleration
 {
+//    NSLog(@"%s", __func__);
     CGFloat x = acceleration.x;
     CGFloat y = acceleration.y;
     CGFloat z = acceleration.z;
     CGFloat a = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
+    // 摇一摇间隔
     if (a < 1.5 && a > 0) {
         self.enter = YES;
     }
+    // 移动statusBar
     if (i == self.subShakeResult.count) {
         _volecity.y += (acceleration.y * 0.5);
         self.statusBar.y -= _volecity.y;
@@ -348,6 +362,7 @@ static int i = 0;
             _volecity.y *= -0.5;
         }
     }
+    // 显示字符串
     if (self.isEnter && a > 4.0f && i < self.subShakeResult.count) {
         NSLog(@"i = %d", i);
         self.enter = NO;
@@ -356,11 +371,16 @@ static int i = 0;
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
         i++;
         if (i == self.subShakeResult.count) {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            i--;
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                i++;
                 self.accelerometer.updateInterval = 1 / 60.0;
                 self.timer = [self getGCDTimerWithOperation:^{
                     self.statusBar.backgroundColor = kRandomColor;
                 }];
+                if (self.timer) {
+                    dispatch_resume(self.timer);
+                }
             });
         }
     }
@@ -391,8 +411,6 @@ static int i = 0;
     //3.要调用的任务
     dispatch_source_set_event_handler(timer, operation);
     
-    //4.开始执行
-    dispatch_resume(timer);
     return timer;
 }
 

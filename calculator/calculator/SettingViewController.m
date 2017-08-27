@@ -36,6 +36,11 @@
     [self.view endEditing:YES];
 }
 
+- (IBAction)setupDefaultData {
+    self.equalResultTextField.text = @"134,7682,8186";
+    self.shakeResultTextView.text = @"你正在看我的魔术表演，是不是觉得很不可思议，精彩还在后面😆😆";
+}
+
 - (IBAction)close {
     [[NSUserDefaults standardUserDefaults] setObject:self.equalResultTextField.text forKey:kEqualResult];
     [[NSUserDefaults standardUserDefaults] synchronize];

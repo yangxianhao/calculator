@@ -56,7 +56,6 @@ typedef void(^GCDOperation)();
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     // 左右删除手势
     UISwipeGestureRecognizer *swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeHeadView)];
     swipe.direction = UISwipeGestureRecognizerDirectionLeft | UISwipeGestureRecognizerDirectionRight;
@@ -72,7 +71,6 @@ typedef void(^GCDOperation)();
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
     NSString *shakeResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kShakeResult];
     self.subShakeResult = [shakeResult componentsSeparatedByString:@"，"];
     if (shakeResult.length) {
@@ -398,7 +396,6 @@ static int i = 0;
      第四个参数:队列
      */
     dispatch_source_t timer = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, queue);
-    
     //2.设置时间等
     /*
      第一个参数:定时器对象
@@ -407,10 +404,8 @@ static int i = 0;
      第四个参数:精准度(表示允许的误差,0表示绝对精准)
      */
     dispatch_source_set_timer(timer, DISPATCH_TIME_NOW, kDuration * NSEC_PER_SEC, 0 * NSEC_PER_SEC);
-    
     //3.要调用的任务
     dispatch_source_set_event_handler(timer, operation);
-    
     return timer;
 }
 

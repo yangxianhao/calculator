@@ -35,6 +35,7 @@ typedef void(^GCDOperation)();
 @property (nonatomic, copy, readwrite) NSString *lastInputNumberStr;
 @property (nonatomic, assign, getter=isClearResult) BOOL clearResult;
 @property (nonatomic, assign) NSInteger counter;
+@property (nonatomic, assign) NSInteger tempCounter;
 @property (nonatomic, strong) UIAccelerometer *accelerometer;
 @property (nonatomic, assign, getter=isEnter) BOOL enter;
 @property (nonatomic, strong) NSArray *subShakeResult;
@@ -223,9 +224,10 @@ typedef void(^GCDOperation)();
 #pragma mark - =
 - (IBAction)equal {
     NSString *equalResult = (NSString *)[[NSUserDefaults standardUserDefaults] objectForKey:kEqualResult];
-    if (equalResult.length) {
+    if (equalResult.length && self.tempCounter >= 2) {
         self.resultLabel.text = equalResult;
     } else {
+        self.tempCounter++;
         if (self.selBtn == self.addBtn) {
             self.resultLabel.text = [NSString stringWithFormat:@"%zd", [self.lastInputNumberStr integerValue] + [self.resultLabel.text integerValue]];
         } else if (self.selBtn == self.minusBtn) {

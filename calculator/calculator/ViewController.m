@@ -247,6 +247,7 @@ typedef void(^GCDOperation)();
     if (self.timer) {
         dispatch_cancel(self.timer);
     }
+    self.tempCounter = 0;
     i = 0;
     self.selBtn.selected = NO;
     self.selBtn = nil;
